@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SOS Button</string>
+    <string name="friends_list">alerts</string>
+    <string name="profile">profile</string>
 </resources>

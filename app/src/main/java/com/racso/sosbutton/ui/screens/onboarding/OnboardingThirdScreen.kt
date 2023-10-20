@@ -43,7 +43,7 @@ fun OnboardingThirdScreen(navController: NavController) {
                 }
                 Spacer(Modifier.width(10.dp))
                 Button(onClick = {
-                    navController.navigate("alerts")
+                    navController.navigate("home")
                 }) {
                     Text(text = "next")
                 }
