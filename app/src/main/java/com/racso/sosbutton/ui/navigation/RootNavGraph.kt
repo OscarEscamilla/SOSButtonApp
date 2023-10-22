@@ -11,11 +11,11 @@ import com.racso.sosbutton.ui.screens.home.HomeScreen
 import com.racso.sosbutton.ui.screens.onboarding.*
 
 @Composable
-fun RootNav(navController: NavHostController) {
+fun RootNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
         route = "root",
-        startDestination = "onboarding"
+        startDestination = "home"
     ) {
         onboardingGraph(navController = navController)
         authGraph(navController = navController)

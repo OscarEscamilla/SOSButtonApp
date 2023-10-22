@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SOS Button</string>
-    <string name="friends_list">alerts</string>
-    <string name="profile">profile</string>
+    <string name="alarms">Alarms</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
 </resources>

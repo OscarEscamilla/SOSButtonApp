@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
-import com.racso.sosbutton.ui.navigation.RootNav
+import com.racso.sosbutton.ui.navigation.RootNavGraph
 import com.racso.sosbutton.ui.theme.SOSButtonTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SOSButtonTheme {
-                RootNav(navController = rememberNavController())
+                RootNavGraph(navController = rememberNavController())
             }
         }
     }
