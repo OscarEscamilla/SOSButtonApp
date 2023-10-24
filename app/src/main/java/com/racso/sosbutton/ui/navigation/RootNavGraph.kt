@@ -15,7 +15,7 @@ fun RootNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
         route = "root",
-        startDestination = "home"
+        startDestination = "onboarding"
     ) {
         onboardingGraph(navController = navController)
         authGraph(navController = navController)
@@ -27,10 +27,8 @@ fun RootNavGraph(navController: NavHostController) {
 
 
 fun NavGraphBuilder.onboardingGraph(navController: NavController) {
-    navigation(route = "onboarding", startDestination = "onboarding_first") {
-        composable(route = "onboarding_first") { OnboardingFirstScreen(navController) }
-        composable(route = "onboarding_second") { OnboardingSecondScreen(navController) }
-        composable(route = "onboarding_third") { OnboardingThirdScreen(navController) }
+    navigation(route = "onboarding", startDestination = "onboarding_main") {
+        composable(route = "onboarding_main") { OnboardingPager(navController) }
     }
 }
 
