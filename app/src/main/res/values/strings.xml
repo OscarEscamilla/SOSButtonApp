@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">SOS Button</string>
+    <!-- BOTTOM BAR TITLES-->
     <string name="alarms">Alarms</string>
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
+    <!-- ONBOARDING -->
+    <string name="onboarding_body_first">Presiona el boton de panico cuando te sientas en peligro y configura distintos gestos para lanzar alertas</string>
+    <string name="onboarding_body_second">Cuidamos de los tuyos, añade tres contactos de confianza para recibir tus alertas</string>
+    <string name="onboarding_body_third">Comunica lo que quieras en tus alertas, personaliza el contenido de tus mensajes de alerta</string>
 </resources>

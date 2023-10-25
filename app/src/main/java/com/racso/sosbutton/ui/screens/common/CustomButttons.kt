@@ -10,14 +10,6 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun SkipOnboardingButton(navController: NavController, originDestination: String){
-    Button(onClick = {
-        navController.navigate("home"){
-            popUpTo(originDestination){
-                inclusive = true
-            }
-        }
-    }) {
-        Text(text = "skip tutorial")
-    }
+fun SkipOnboardingButton(modifier: Modifier, navController: NavController, originDestination: String){
+
 }
