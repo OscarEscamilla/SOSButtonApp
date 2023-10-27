@@ -1,6 +1,9 @@
 package com.racso.sosbutton.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -9,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.racso.sosbutton.ui.screens.home.HomeScreen
 import com.racso.sosbutton.ui.screens.onboarding.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun RootNavGraph(navController: NavHostController) {
@@ -27,8 +31,8 @@ fun RootNavGraph(navController: NavHostController) {
 
 
 fun NavGraphBuilder.onboardingGraph(navController: NavController) {
-    navigation(route = "onboarding", startDestination = "onboarding_main") {
-        composable(route = "onboarding_main") { OnboardingPager(navController) }
+    navigation(route = "onboarding", startDestination = "onboarding_pager") {
+        composable(route = "onboarding_pager") { OnboardingPager(navController) }
     }
 }
 

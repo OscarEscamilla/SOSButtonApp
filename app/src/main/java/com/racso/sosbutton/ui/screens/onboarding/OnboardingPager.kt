@@ -1,5 +1,6 @@
 package com.racso.sosbutton.ui.screens.onboarding
 
+import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,20 +17,37 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.racso.sosbutton.R
+import com.racso.sosbutton.ui.navigation.Screen
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnboardingPager(navController: NavController) {
+fun OnboardingPager(navController: NavController, onboardingViewModel: OnboardingViewModel = hiltViewModel()) {
     ConstraintLayout(Modifier.fillMaxSize()) {
+
+        if (onboardingViewModel.versionappSaved.value.isNotEmpty()){
+            navController.navigate("home") {
+                popUpTo("onboarding") {
+                    inclusive = true
+                }
+            }
+        }else{
+            val context = LocalContext.current
+            Toast.makeText(context, "Version app doesnt has saved", Toast.LENGTH_SHORT).show()
+        }
+
         val (onboardingSkip) = createRefs()
 
         val pagerList = arrayOf(
@@ -86,6 +104,7 @@ fun OnboardingPager(navController: NavController) {
                 }
             }
             Button(onClick = {
+                onboardingViewModel.saveVersionAtFirstLauch("1.0")
                 navController.navigate("home") {
                     popUpTo("onboarding") {
                         inclusive = true
@@ -97,5 +116,6 @@ fun OnboardingPager(navController: NavController) {
         }
     }
 }
+
 
 data class OnboardingPage(val text: String = "", val drawable: Int = 0)
