@@ -8,4 +8,5 @@
     <string name="onboarding_body_first">Presiona el boton de panico cuando te sientas en peligro y configura distintos gestos para lanzar alertas</string>
     <string name="onboarding_body_second">Cuidamos de los tuyos, añade tres contactos de confianza para recibir tus alertas</string>
     <string name="onboarding_body_third">Comunica lo que quieras en tus alertas, personaliza el contenido de tus mensajes de alerta</string>
+    <string name="skip">Skip</string>
 </resources>

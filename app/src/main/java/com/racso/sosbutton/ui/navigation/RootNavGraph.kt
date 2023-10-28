@@ -13,34 +13,26 @@ import androidx.navigation.compose.navigation
 import com.racso.sosbutton.ui.screens.home.HomeScreen
 import com.racso.sosbutton.ui.screens.onboarding.*
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.racso.sosbutton.ui.SplashScreen
 
 @Composable
 fun RootNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
         route = "root",
-        startDestination = "onboarding"
+        startDestination = Screen.Splash.route
     ) {
-        onboardingGraph(navController = navController)
+        composable(route = Screen.Splash.route) { SplashScreen(navController) }
+        composable(route = Screen.Onboarding.route) { OnboardingScreen(navController) }
         authGraph(navController = navController)
-        composable(route = "home") {
-            HomeScreen()
-        }
+        composable(route = Screen.Home.route) { HomeScreen() }
     }
 }
-
-
-fun NavGraphBuilder.onboardingGraph(navController: NavController) {
-    navigation(route = "onboarding", startDestination = "onboarding_pager") {
-        composable(route = "onboarding_pager") { OnboardingPager(navController) }
-    }
-}
-
 
 fun NavGraphBuilder.authGraph(navController: NavController) {
-    navigation(route = "auth", startDestination = "login") {
-        composable(route = "login") { /* TODO */ }
-        composable(route = "register") {  /* TODO */ }
-        composable(route = "password_recover") { /* TODO */ }
+    navigation(route = "auth", startDestination = Screen.Login.route) {
+        composable(route = Screen.Login.route) { /* TODO */ }
+        composable(route = Screen.Register.route) {  /* TODO */ }
+        composable(route = Screen.PasswordRecovery.route) { /* TODO */ }
     }
 }

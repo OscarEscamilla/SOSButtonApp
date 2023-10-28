@@ -18,25 +18,17 @@ class PreferencesDataStore @Inject constructor(@ApplicationContext val context: 
 
     fun readValue(name: String): Flow<String> {
         val key = stringPreferencesKey(name)
-        val preferenceFlow: Flow<String> = context.dataStore.data
-            .map { preferences ->
-                preferences[key] ?: ""
-            }
+        val preferenceFlow: Flow<String> = context.dataStore.data.map { preferences ->
+            preferences[key] ?: ""
+        }
         return preferenceFlow
     }
 
-    suspend fun saveValue(name: String, value: String){
+    suspend fun saveValue(name: String, value: String) {
         val key = stringPreferencesKey(name)
         context.dataStore.edit { preferences ->
             preferences[key] = value
         }
     }
 
-    fun updateValue(key: String, value: String) {
-
-    }
-
-    fun deleteValue(key: String, value: String) {
-
-    }
 }

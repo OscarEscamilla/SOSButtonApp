@@ -17,20 +17,16 @@ import com.racso.sosbutton.ui.screens.home.SettingsScreen
 
 @Composable
 fun HomeNav(navController: NavHostController, innerPadding: PaddingValues) {
-    NavHost(navController, startDestination = "home", Modifier.padding(innerPadding)) {
+    NavHost(navController, startDestination = Screen.Home.route, Modifier.padding(innerPadding)) {
         homeGraph(navController)
     }
 }
 fun NavGraphBuilder.homeGraph(navController: NavHostController){
-    navigation(route = "home", startDestination = Screen.Alarms.route){
+    navigation(route = Screen.Home.route, startDestination = Screen.Alarms.route){
         composable(Screen.Alarms.route) { AlertsScreen(navController) }
         composable(Screen.Profile.route) { ProfileScreen(navController) }
         composable(Screen.Settings.route) { SettingsScreen(navController) }
     }
 }
-sealed class Screen(val route: String, @StringRes val resourceId: Int) {
-    object Profile : Screen("profile", R.string.profile)
-    object Settings : Screen("settings", R.string.settings)
-    object Alarms : Screen("alarms", R.string.alarms)
-}
+
 

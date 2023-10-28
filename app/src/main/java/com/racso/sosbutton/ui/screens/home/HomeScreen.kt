@@ -77,6 +77,12 @@ fun getNavIcon(screen: Screen): ImageVector {
         Screen.Profile -> Icons.Filled.Person
         Screen.Alarms -> Icons.Filled.Notifications
         Screen.Settings -> Icons.Filled.Settings
+        Screen.Login -> TODO()
+        Screen.PasswordRecovery -> TODO()
+        Screen.Register -> TODO()
+        Screen.Home -> TODO()
+        Screen.Onboarding -> TODO()
+        Screen.Splash -> TODO()
     }
 }
 
