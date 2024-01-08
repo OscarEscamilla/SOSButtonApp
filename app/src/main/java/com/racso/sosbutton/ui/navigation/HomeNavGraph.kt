@@ -10,8 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import com.racso.sosbutton.R
-import com.racso.sosbutton.ui.screens.home.AlertsScreen
+import com.racso.sosbutton.ui.screens.home.HomeScreen
 import com.racso.sosbutton.ui.screens.home.ProfileScreen
 import com.racso.sosbutton.ui.screens.home.SettingsScreen
 
@@ -23,7 +22,7 @@ fun HomeNav(navController: NavHostController, innerPadding: PaddingValues) {
 }
 fun NavGraphBuilder.homeGraph(navController: NavHostController){
     navigation(route = Screen.Home.route, startDestination = Screen.Alarms.route){
-        composable(Screen.Alarms.route) { AlertsScreen(navController) }
+        composable(Screen.Alarms.route) { HomeScreen(navController) }
         composable(Screen.Profile.route) { ProfileScreen(navController) }
         composable(Screen.Settings.route) { SettingsScreen(navController) }
     }

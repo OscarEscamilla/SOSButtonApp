@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material.Scaffold
 import androidx.navigation.compose.rememberNavController
 import com.racso.sosbutton.ui.navigation.RootNavGraph
 import com.racso.sosbutton.ui.screens.onboarding.OnboardingViewModel

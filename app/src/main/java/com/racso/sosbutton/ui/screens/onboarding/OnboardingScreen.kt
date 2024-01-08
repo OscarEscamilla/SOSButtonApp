@@ -1,5 +1,12 @@
 package com.racso.sosbutton.ui.screens.onboarding
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.util.Log
+import androidx.activity.compose.ManagedActivityResultLauncher
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,13 +23,16 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.racso.sosbutton.R
@@ -30,7 +40,10 @@ import com.racso.sosbutton.ui.navigation.Screen
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnboardingScreen(navController: NavController, onboardingViewModel: OnboardingViewModel = hiltViewModel()) {
+fun OnboardingScreen(
+    navController: NavController,
+    onboardingViewModel: OnboardingViewModel = hiltViewModel()
+) {
     ConstraintLayout(Modifier.fillMaxSize()) {
 
         val (onboardingSkip) = createRefs()
@@ -78,7 +91,8 @@ fun OnboardingScreen(navController: NavController, onboardingViewModel: Onboardi
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 repeat(pagerState.pageCount) { iteration ->
-                    val color = if (pagerState.currentPage == iteration) Color.DarkGray else Color.LightGray
+                    val color =
+                        if (pagerState.currentPage == iteration) Color.DarkGray else Color.LightGray
                     Box(
                         modifier = Modifier
                             .padding(2.dp)
@@ -98,6 +112,5 @@ fun OnboardingScreen(navController: NavController, onboardingViewModel: Onboardi
         }
     }
 }
-
 
 data class OnboardingPageData(val text: String = "", val drawable: Int = 0)

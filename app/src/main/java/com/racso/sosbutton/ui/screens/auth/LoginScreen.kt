@@ -1,6 +1,5 @@
 package com.racso.sosbutton.ui.screens.auth
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -11,16 +10,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
-    Surface {
-        Scaffold() { padding ->
-            Column(modifier = Modifier.padding(padding), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(text = "Login Screen", fontSize = 20.sp)
-            }
+fun LoginScreen(navController: NavController) {
+
+    Scaffold() { padding ->
+        Column(modifier = Modifier.padding(padding), horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(text = "Login Screen", fontSize = 20.sp)
         }
     }
+
 }
