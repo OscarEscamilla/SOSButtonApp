@@ -59,7 +59,7 @@ fun TabBar(navController: NavHostController = rememberNavController()) {
                             }
                         },
                         colors = NavigationBarItemDefaults.colors(
-                            indicatorColor = MaterialTheme.colorScheme.tertiary,
+                            indicatorColor = MaterialTheme.colorScheme.secondary,
                             unselectedIconColor = Color.White,
                             unselectedTextColor = Color.White
                         )

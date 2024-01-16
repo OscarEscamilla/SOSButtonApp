@@ -13,6 +13,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -121,7 +122,7 @@ fun HomeScreen(navController: NavHostController) {
                     .size(70.dp)
                     .clip(CircleShape)
                     .border(
-                        BorderStroke(3.dp, MaterialTheme.colorScheme.secondary),
+                        BorderStroke(3.dp, MaterialTheme.colorScheme.primary),
                         CircleShape
                     )
             )
@@ -143,7 +144,7 @@ fun HomeScreen(navController: NavHostController) {
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(top = CustomSizes.MEDIUM, bottom = CustomSizes.MEDIUM),
+                .padding(top = CustomSizes.MEDIUM),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextButton(modifier = Modifier.fillMaxWidth(), onClick = {
@@ -152,6 +153,7 @@ fun HomeScreen(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.img),
                     contentDescription = "alarm icon",
+                    modifier = Modifier.size(150.dp)
                 )
             }
             Text(
@@ -162,13 +164,23 @@ fun HomeScreen(navController: NavHostController) {
                 textAlign = TextAlign.Justify
             )
         }
+        Text(
+            text = "Tips",
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(
+                start = CustomSizes.MEDIUM,
+                top = CustomSizes.MEDIUM,
+                bottom = CustomSizes.SMALL
+            )
+        )
         LazyRow {
             items(itemList) { item ->
+                Spacer(modifier = Modifier.padding(10.dp))
                 ElevatedCard(
                     elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
                     modifier = Modifier
-                        .size(width = 240.dp, height = 200.dp)
-                        .padding(CustomSizes.SMALL)
+                        .size(width = 230.dp, height = 200.dp)
                         .background(
                             Color.White
                         )

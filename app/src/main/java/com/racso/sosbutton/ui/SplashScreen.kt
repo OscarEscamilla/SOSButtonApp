@@ -29,7 +29,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(navController: NavController, onboardingViewModel: OnboardingViewModel = hiltViewModel()){
 
-    val userIsLogedIn = false
+    val userIsLogedIn = true
 
     LaunchedEffect(Unit) {
         delay(1000L)

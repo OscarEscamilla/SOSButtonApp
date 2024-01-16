@@ -1,6 +1,5 @@
 package com.racso.sosbutton.ui.navigation
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable

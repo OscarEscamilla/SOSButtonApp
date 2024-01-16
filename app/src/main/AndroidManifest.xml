@@ -2,16 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
-
-    <!--on below line we are adding sms permissions-->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- on below line we are adding sms permissions -->
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".SOSButtonApplication"
@@ -24,6 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SOSButton"
         tools:targetApi="31">
+        <service
+            android:name=".ui.services.ShakeDetectionService"
+            android:enabled="true"
+            android:exported="false"></service>
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
