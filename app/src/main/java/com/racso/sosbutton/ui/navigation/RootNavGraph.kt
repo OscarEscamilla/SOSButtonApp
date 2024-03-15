@@ -11,7 +11,7 @@ import androidx.navigation.compose.navigation
 import com.racso.sosbutton.ui.screens.onboarding.*
 import com.racso.sosbutton.ui.SplashScreen
 import com.racso.sosbutton.ui.screens.auth.LoginScreen
-import com.racso.sosbutton.ui.screens.home.TabBar
+import com.racso.sosbutton.ui.screens.home.BottomBar
 
 @Composable
 fun RootNavGraph(navController: NavHostController) {
@@ -23,7 +23,7 @@ fun RootNavGraph(navController: NavHostController) {
         composable(route = Screen.Splash.route) { SplashScreen(navController) }
         composable(route = Screen.Onboarding.route) { OnboardingScreen(navController) }
         authGraph(navController = navController)
-        composable(route = Screen.Home.route) { TabBar() }
+        composable(route = Screen.Home.route) { BottomBar() }
     }
 }
 

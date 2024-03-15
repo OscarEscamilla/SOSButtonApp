@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -103,95 +104,93 @@ fun HomeScreen(navController: NavHostController) {
 
 
     //  ************** UI ROOT CONTAINER ****************
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-    ) {
-        Row(
+    Surface {
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(all = CustomSizes.MEDIUM),
-            verticalAlignment = Alignment.CenterVertically
+                .verticalScroll(rememberScrollState())
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.avatar),
-                contentDescription = "Profile user image",
-                contentScale = ContentScale.Crop,
+            Row(
                 modifier = Modifier
-                    .size(70.dp)
-                    .clip(CircleShape)
-                    .border(
-                        BorderStroke(3.dp, MaterialTheme.colorScheme.primary),
-                        CircleShape
-                    )
-            )
-            Text(
-                text = "Hola $username!",
-                color = Color.DarkGray,
-                fontWeight = FontWeight.Bold,
-                style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(end = CustomSizes.MEDIUM, start = CustomSizes.MEDIUM)
-            )
-        }
-        Text(
-            text = "Te ayudamos a mantener a tu familia y a ti a salvo",
-            color = Color.DarkGray,
-            fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(end = CustomSizes.MEDIUM, start = CustomSizes.MEDIUM)
-        )
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .padding(top = CustomSizes.MEDIUM),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            TextButton(modifier = Modifier.fillMaxWidth(), onClick = {
-                sendSMS()
-            }) {
+                    .fillMaxSize()
+                    .padding(all = CustomSizes.MEDIUM),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img),
-                    contentDescription = "alarm icon",
-                    modifier = Modifier.size(150.dp)
+                    painter = painterResource(id = R.drawable.avatar),
+                    contentDescription = "Profile user image",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(70.dp)
+                        .clip(CircleShape)
+                        .border(
+                            BorderStroke(3.dp, MaterialTheme.colorScheme.primary),
+                            CircleShape
+                        )
+                )
+                Text(
+                    text = "Hola $username!",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineLarge,
+                    modifier = Modifier.padding(end = CustomSizes.MEDIUM, start = CustomSizes.MEDIUM)
                 )
             }
             Text(
-                text = "Presiona el boton de alerta para lanzar una.",
-                color = Color.Red,
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
-                textAlign = TextAlign.Justify
+                text = "Te ayudamos a mantener a tu familia y a ti a salvo",
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(end = CustomSizes.MEDIUM, start = CustomSizes.MEDIUM)
             )
-        }
-        Text(
-            text = "Tips",
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(
-                start = CustomSizes.MEDIUM,
-                top = CustomSizes.MEDIUM,
-                bottom = CustomSizes.SMALL
-            )
-        )
-        LazyRow {
-            items(itemList) { item ->
-                Spacer(modifier = Modifier.padding(10.dp))
-                ElevatedCard(
-                    elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                    modifier = Modifier
-                        .size(width = 230.dp, height = 200.dp)
-                        .background(
-                            Color.White
-                        )
-                ) {
-                    Text(
-                        text = "Elevated $item",
-                        modifier = Modifier.padding(16.dp),
-                        textAlign = TextAlign.Center,
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(top = CustomSizes.MEDIUM),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                TextButton(modifier = Modifier.fillMaxWidth(), onClick = {
+                    sendSMS()
+                }) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img),
+                        contentDescription = "alarm icon",
+                        modifier = Modifier.size(150.dp)
                     )
+                }
+                Text(
+                    text = "Presiona el boton de alerta para lanzar una.",
+                    color = Color.Red,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
+                    textAlign = TextAlign.Justify
+                )
+            }
+            Text(
+                text = "Tips",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(
+                    start = CustomSizes.MEDIUM,
+                    top = CustomSizes.MEDIUM,
+                    bottom = CustomSizes.SMALL
+                )
+            )
+            LazyRow {
+                items(itemList) { item ->
+                    Spacer(modifier = Modifier.padding(10.dp))
+                    ElevatedCard(
+                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                        modifier = Modifier
+                            .size(width = 230.dp, height = 200.dp)
+                    ) {
+                        Text(
+                            text = "Elevated $item",
+                            modifier = Modifier.padding(16.dp),
+                            textAlign = TextAlign.Center,
+                        )
+                    }
                 }
             }
         }
     }
+
 }

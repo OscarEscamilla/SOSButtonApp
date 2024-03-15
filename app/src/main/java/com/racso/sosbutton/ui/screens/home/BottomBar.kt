@@ -1,5 +1,6 @@
 package com.racso.sosbutton.ui.screens.home
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
@@ -17,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -27,20 +29,35 @@ import com.racso.sosbutton.ui.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TabBar(navController: NavHostController = rememberNavController()) {
+fun BottomBar(navController: NavHostController = rememberNavController()) {
     val items = listOf(
         Screen.Alarms,
         Screen.Profile,
         Screen.Settings
     )
+
+    val darkColors = NavigationBarItemDefaults.colors(
+        unselectedIconColor = MaterialTheme.colorScheme.inverseOnSurface,
+        unselectedTextColor = MaterialTheme.colorScheme.inverseOnSurface,
+        selectedTextColor = MaterialTheme.colorScheme.inverseOnSurface,
+        selectedIconColor = Color.White
+    )
+    val lightColors = NavigationBarItemDefaults.colors(
+        unselectedIconColor = Color.White,
+        unselectedTextColor = Color.White,
+        selectedTextColor = Color.White
+    )
+
+
+
     Scaffold(
         content = { innerPadding ->
             HomeNav(navController = navController, innerPadding)
         },
         bottomBar = {
             NavigationBar(
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = Color.White
+                containerColor = if(isSystemInDarkTheme()) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary,
+                tonalElevation = 8.dp
             ) {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
@@ -58,11 +75,7 @@ fun TabBar(navController: NavHostController = rememberNavController()) {
                                 restoreState = true
                             }
                         },
-                        colors = NavigationBarItemDefaults.colors(
-                            indicatorColor = MaterialTheme.colorScheme.secondary,
-                            unselectedIconColor = Color.White,
-                            unselectedTextColor = Color.White
-                        )
+                        colors = if(isSystemInDarkTheme()) darkColors else lightColors
                     )
                 }
             }

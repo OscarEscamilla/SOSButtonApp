@@ -2,6 +2,7 @@ package com.racso.sosbutton.ui
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.window.SplashScreen
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -23,6 +25,7 @@ import androidx.navigation.NavController
 import com.racso.sosbutton.R
 import com.racso.sosbutton.ui.navigation.Screen
 import com.racso.sosbutton.ui.screens.onboarding.OnboardingViewModel
+import com.racso.sosbutton.ui.theme.SOSButtonTheme
 import kotlinx.coroutines.delay
 
 
@@ -47,10 +50,12 @@ fun SplashScreen(navController: NavController, onboardingViewModel: OnboardingVi
         }
     }
 
-    Column(
-        Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Image(painter = painterResource(id = R.drawable.red_alarm_icon), contentDescription = "")
+    Surface {
+        Column(
+            Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            Image(painter = painterResource(id = R.drawable.red_alarm_icon), contentDescription = "")
+        }
     }
 }

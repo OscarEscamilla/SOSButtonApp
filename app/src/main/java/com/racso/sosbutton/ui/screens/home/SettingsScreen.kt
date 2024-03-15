@@ -63,118 +63,136 @@ fun SettingsScreen(navController: NavHostController) {
     var itemsContacts = listOf("Oscar", "Pedro", "Fulanito")
     var itemsComunication = listOf("WhatsApp", "Llamada", "SMS")
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState())) {
-            Text(
-                text = "Gestos",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = CustomSizes.MEDIUM, top = CustomSizes.SMALL, bottom = CustomSizes.SMALL)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+        Text(
+            text = "Gestos",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(
+                start = CustomSizes.MEDIUM,
+                top = CustomSizes.SMALL,
+                bottom = CustomSizes.SMALL
             )
-            Row(
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            ElevatedCard(
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                    .weight(1f)
+                    .height(130.dp)
             ) {
-                ElevatedCard(
-                    elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(130.dp)
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(CustomSizes.SMALL)
                 ) {
-                    Column(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(CustomSizes.SMALL)
-                    ) {
-                        Text(
-                            text = "Shake",
-                            textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Text(
-                            text = "Agita tu telefono en situaciones de peligro para lanzar una alerta",
-                            textAlign = TextAlign.Left,
-                            style = MaterialTheme.typography.bodySmall,
-                        )
-                        Switch(
-                            modifier = Modifier.padding(top = CustomSizes.SMALL),
-                            checked = checkedShake,
-                            onCheckedChange = {
-                                checkedShake = it
-                            }
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.padding(10.dp))
-                ElevatedCard(
-                    elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(130.dp)
-                ) {
-                    Column(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(CustomSizes.SMALL)
-                    ) {
-                        Text(
-                            text = "Press",
-                            textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Text(
-                            text = "Presiona el boton de bloqueo tres veces para lanzar una alerta",
-                            textAlign = TextAlign.Left,
-                            style = MaterialTheme.typography.bodySmall,
-                        )
-                        Switch(
-                            modifier = Modifier.padding(top = CustomSizes.SMALL),
-                            checked = checkedPress,
-                            onCheckedChange = {
-                                checkedPress = it
-                            }
-                        )
-                    }
+                    Text(
+                        text = "Shake",
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "Agita tu telefono en situaciones de peligro para lanzar una alerta",
+                        textAlign = TextAlign.Left,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                    Switch(
+                        modifier = Modifier.padding(top = CustomSizes.SMALL),
+                        checked = checkedShake,
+                        onCheckedChange = {
+                            checkedShake = it
+                        }
+                    )
                 }
             }
-            // Trust contacts section
-            Text(
-                text = "Contactos de confianza",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = CustomSizes.MEDIUM, top = CustomSizes.SMALL, bottom = CustomSizes.SMALL)
-            )
-            itemsContacts.forEach {
-                itemContact(name = it)
-            }
-            // Alarm media
-            Text(
-                text = "Medio de alarma",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = CustomSizes.MEDIUM, top = CustomSizes.SMALL, bottom = CustomSizes.SMALL)
-            )
-            itemsComunication.forEach {
-                itemComunication(name = it)
+            Spacer(modifier = Modifier.padding(10.dp))
+            ElevatedCard(
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                modifier = Modifier
+                    .weight(1f)
+                    .height(130.dp)
+            ) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(CustomSizes.SMALL)
+                ) {
+                    Text(
+                        text = "Press",
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "Presiona el boton de bloqueo tres veces para lanzar una alerta",
+                        textAlign = TextAlign.Left,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                    Switch(
+                        modifier = Modifier.padding(top = CustomSizes.SMALL),
+                        checked = checkedPress,
+                        onCheckedChange = {
+                            checkedPress = it
+                        }
+                    )
+                }
             }
         }
+        // Trust contacts section
+        Text(
+            text = "Contactos de confianza",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(
+                start = CustomSizes.MEDIUM,
+                top = CustomSizes.SMALL,
+                bottom = CustomSizes.SMALL
+            )
+        )
+        itemsContacts.forEach {
+            itemContact(name = it)
+        }
+        // Alarm media
+        Text(
+            text = "Medio de alarma",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(
+                start = CustomSizes.MEDIUM,
+                top = CustomSizes.SMALL,
+                bottom = CustomSizes.SMALL
+            )
+        )
+        itemsComunication.forEach {
+            itemComunication(name = it)
+        }
+    }
 }
 
 @Composable
-fun itemComunication(name: String){
-    ElevatedCard(colors = CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.secondary,
-        contentColor = Color.DarkGray
-    ),modifier = Modifier
-        .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM, bottom = CustomSizes.SMALL)
-        .wrapContentSize()){
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
+fun itemComunication(name: String) {
+    ElevatedCard(
+        modifier = Modifier
+            .padding(
+                start = CustomSizes.MEDIUM,
+                end = CustomSizes.MEDIUM,
+                bottom = CustomSizes.SMALL
+            )
+            .wrapContentSize()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         )
@@ -192,16 +210,20 @@ fun itemComunication(name: String){
 }
 
 @Composable
-fun itemContact(name: String){
-    ElevatedCard(colors = CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.secondary,
-        contentColor = Color.DarkGray
-    ),modifier = Modifier
-        .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM, bottom = CustomSizes.SMALL)
-        .wrapContentSize()){
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
+fun itemContact(name: String) {
+    ElevatedCard(
+        modifier = Modifier
+            .padding(
+                start = CustomSizes.MEDIUM,
+                end = CustomSizes.MEDIUM,
+                bottom = CustomSizes.SMALL
+            )
+            .wrapContentSize()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = CustomSizes.MEDIUM, end = CustomSizes.MEDIUM),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         )
@@ -210,7 +232,7 @@ fun itemContact(name: String){
                 Text(name, style = MaterialTheme.typography.titleMedium)
                 Text("7751306549")
             }
-            IconButton(onClick = { Log.e("","Contact clicked")}) {
+            IconButton(onClick = { Log.e("", "Contact clicked") }) {
                 Icon(
                     Icons.Default.Create,
                     contentDescription = null,
