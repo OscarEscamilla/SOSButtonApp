@@ -1,5 +1,6 @@
 package com.racso.sosbutton.ui.screens.home
 
+import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -52,7 +53,10 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.racso.sosbutton.R
+import com.racso.sosbutton.ui.theme.SOSButtonTheme
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
@@ -240,5 +244,17 @@ fun itemContact(name: String) {
                 )
             }
         }
+    }
+}
+
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "HomeScreenPreviewDark"
+)
+@Preview(showBackground = true)
+@Composable
+fun SettingsScreenPreview(){
+    SOSButtonTheme {
+        SettingsScreen(navController = rememberNavController())
     }
 }

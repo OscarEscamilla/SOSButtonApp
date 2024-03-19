@@ -1,5 +1,6 @@
 package com.racso.sosbutton.ui.screens.home
 
+import android.content.res.Configuration
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
@@ -18,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -26,6 +28,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.racso.sosbutton.ui.navigation.HomeNav
 import com.racso.sosbutton.ui.navigation.Screen
+import com.racso.sosbutton.ui.theme.SOSButtonTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,9 +40,10 @@ fun BottomBar(navController: NavHostController = rememberNavController()) {
     )
 
     val darkColors = NavigationBarItemDefaults.colors(
-        unselectedIconColor = MaterialTheme.colorScheme.inverseOnSurface,
-        unselectedTextColor = MaterialTheme.colorScheme.inverseOnSurface,
-        selectedTextColor = MaterialTheme.colorScheme.inverseOnSurface,
+        unselectedIconColor = Color.White,
+        unselectedTextColor = Color.White,
+        indicatorColor = Color.DarkGray,
+        selectedTextColor = Color.White,
         selectedIconColor = Color.White
     )
     val lightColors = NavigationBarItemDefaults.colors(
@@ -95,7 +99,19 @@ fun getNavIcon(screen: Screen): ImageVector {
         Screen.Home -> TODO()
         Screen.Onboarding -> TODO()
         Screen.Splash -> TODO()
-        else -> { TODO() }
+    }
+}
+
+
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "HomeScreenPreviewDark"
+)
+@Preview()
+@Composable
+fun BottomBarPreview(){
+    SOSButtonTheme {
+        BottomBar(navController = rememberNavController())
     }
 }
 

@@ -1,4 +1,4 @@
-package com.racso.sosbutton.data.repositories
+package com.racso.sosbutton.data.repository
 
 import com.racso.sosbutton.data.local.PreferencesDataStore
 import kotlinx.coroutines.flow.Flow

@@ -3,6 +3,7 @@ package com.racso.sosbutton.ui.screens.onboarding
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -30,19 +31,35 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.racso.sosbutton.R
 import com.racso.sosbutton.ui.navigation.Screen
+import com.racso.sosbutton.ui.theme.SOSButtonTheme
 
-@OptIn(ExperimentalFoundationApi::class)
+
+
 @Composable
 fun OnboardingScreen(
     navController: NavController,
-    onboardingViewModel: OnboardingViewModel = hiltViewModel()
+    onboardingViewModel: OnboardingViewModel = hiltViewModel()){
+    OnboardingPager(onSkip = {
+        onboardingViewModel.saveVersionAtFirstLauch("1.0")
+        navController.popBackStack()
+        navController.navigate(Screen.Home.route)
+    })
+}
+
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun OnboardingPager(
+    onSkip: () -> Unit
 ) {
     ConstraintLayout(Modifier.fillMaxSize()) {
 
@@ -102,14 +119,22 @@ fun OnboardingScreen(
                     )
                 }
             }
-            Button(onClick = {
-                onboardingViewModel.saveVersionAtFirstLauch("1.0")
-                navController.popBackStack()
-                navController.navigate(Screen.Home.route)
-            }) {
+            Button(onClick = onSkip) {
                 Text(text = stringResource(R.string.skip))
             }
         }
+    }
+}
+
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "OnboardingScreenPreviewDark"
+)
+@Preview(showBackground = true)
+@Composable
+fun OnboardingScreenPreview(){
+    SOSButtonTheme {
+        OnboardingPager({})
     }
 }
 
